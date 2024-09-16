@@ -35,14 +35,21 @@ def filter_data(tempdf, filter_col, filter_val):
     filtered_data = tempdf[tempdf[filter_col]==filter_val]
     return filtered_data
 
-def transform_data(tempdf, group_by_col_list, measure_col, _func):
+def transform_data(tempdf, group_by_col_list, measure_col1, measure_col2, _func, derived_field=None):
     if _func == 'sum':
-        transformed_data = tempdf.groupby(group_by_col_list)[measure_col].sum().reset_index()
+        transformed_data = tempdf.groupby(group_by_col_list)[measure_col1].sum().reset_index()
     elif _func == 'distinct count':
-        transformed_data = tempdf.groupby(group_by_col_list)[measure_col].nunique().reset_index()
+        transformed_data = tempdf.groupby(group_by_col_list)[measure_col1].nunique().reset_index()
+    elif _func == 'weighted_mean':
+        mean_price_field = 'Mean Price'
+        tempdf[mean_price_field] = tempdf[measure_col1]*tempdf[measure_col2]
+        transformed_data = tempdf.groupby(group_by_col_list)[measure_col1, mean_price_field].sum().reset_index()
+        transformed_data[mean_price_field] = transformed_data[mean_price_field]/transformed_data[measure_col1]
+        derived_field = mean_price_field
     else:
         pass
-    return transformed_data
+
+    return transformed_data, derived_field
 
 def add_line():
     st.write("---")
@@ -124,8 +131,12 @@ if __name__ == '__main__':
         dft3 = filter_data(df3, filter_col=select_column1, filter_val=selected_column1)
         dft3 = filter_data(dft3, filter_col=select_column2, filter_val=selected_column2)
 
-        dft3 = transform_data(dft3, group_by_col_list=['Brand', 'Price (usd)'], measure_col='product_count', _func='sum')
-        display_chart(dft3, _description="C. Sub Category and Differentiation : Brand Pricing Comparison", x='Price (usd)', y='Brand',
+        derived_field_input = 'Mean Price (USD)'
+        dft3, derived_field_output = transform_data(dft3, group_by_col_list=[select_column1, select_column2, 'Brand'],
+                                             measure_col1='product_count' ,measure_col2='Price (usd)', _func='weighted_mean',
+                                             derived_field = derived_field_input
+                                             )
+        display_chart(dft3, _description="C. Sub Category and Differentiation : Brand Pricing Comparison", x=derived_field_output, y='Brand',
                       z='product_count', w='circle-dot', v='Brand')
     except:
         pass
