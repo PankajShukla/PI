@@ -43,9 +43,14 @@ def transform_data(tempdf, group_by_col_list, measure_col1, measure_col2, _func,
     elif _func == 'weighted_mean':
         mean_price_field = 'Mean Price'
         tempdf[mean_price_field] = tempdf[measure_col1]*tempdf[measure_col2]
-        transformed_data = tempdf.groupby(group_by_col_list)[measure_col1, mean_price_field].sum().reset_index()
+
+        transformed_data1 = tempdf.groupby(group_by_col_list)[measure_col1].sum().reset_index()
+        transformed_data2 = tempdf.groupby(group_by_col_list)[mean_price_field].sum().reset_index()
+
+        transformed_data = pd.merge(transformed_data1, transformed_data2, on=group_by_col_list, how='inner')
         transformed_data[mean_price_field] = transformed_data[mean_price_field]/transformed_data[measure_col1]
         derived_field = mean_price_field
+
     else:
         pass
 
@@ -132,7 +137,7 @@ if __name__ == '__main__':
         dft3 = filter_data(dft3, filter_col=select_column2, filter_val=selected_column2)
 
         derived_field_input = 'Mean Price (USD)'
-        dft3, derived_field_output = transform_data(dft3, group_by_col_list=[select_column1, select_column2, 'Brand'],
+        dft3, derived_field_output = transform_data(dft3, group_by_col_list=['Brand'],
                                              measure_col1='product_count' ,measure_col2='Price (usd)', _func='weighted_mean',
                                              derived_field = derived_field_input
                                              )
