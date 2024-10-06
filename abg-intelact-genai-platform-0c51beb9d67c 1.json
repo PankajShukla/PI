@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "abg-intelact-genai-platform",
+  "private_key_id": "0c51beb9d67c100f239f108a7a58f6adb1ee7754",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCyypc4zP9+wAM3\nVZpwPTfxKXe1eT7DCIULc4ytj8PazH2eSqjC84/cAE9lCvQHKCRwXqnhqzR7A1Wu\nkt03YEQ4UUR7PvEp9fYHqgofreRlm2WnvFYnJKgO4J3VN1jGwebhbb65M9wqI3d9\nRNfngQIYnfKn5cYS0vZs5JcbKpscR4uB7wEnzs6fcR5814p5dDnMc0CT9CnpPWtA\nXMYzkePrTGyAMKrbuptieanVfVgYXQhYTHJyrJJlEFI+ZnusUfFVsKBQjHty8zvO\nUOToGyxhn0z9Jn3xBmjBdFCmB+37nCckXXbOiN1UGpEiJoFB7xO3tKTP/bdfEG/G\naegYWsG1AgMBAAECggEACNXQ5UJHU4jCxlNy0oSwvmuLLXea+pS+mZNE0QR5H3EN\nhoRjLi2B3wa3TBbF4MV2D4Ua2TqjP3tc55SWw/hiedn72I9PgZnuMr2PZINf9Wym\nRSseCS8n8ukP3T9JiGdNzoQK2CiDT73GJA81doykgUaE43eL8zz9NBWTwtVQw8C1\ntzgnZRX7p8mJXQrXOuBPWBXzLi23JNpzBdNwd8jWJMjA8NUSBCh3mtnRiadnWoQL\nJ/1uEhfMH805AEEagdTdexy6At9UX1tDRULMR4SkVqT15qnnmq/DENgz3a2Y1jwu\nXo6U7Ncqr42fSZtNWY/q/zA9AsOWMxkVGCu087wVwQKBgQDqLMTMyGjXup7M8CfF\nHD8MimUQ/QXRSWDlUsTO2tnlhKqRkjAh2htYBv7hwasxTbz28RCk1C5NFLZgqqWY\nIu63kC0QDSiBhXuBdqZwD5EiVfaQYXVlIKb9M1hViaS8/pUeWk8E9R034JqLrUbw\nufr9EgJmFDYKg96vdR6H2a42xQKBgQDDdGoSshk3BMnhWkU58szRaAWcre0OUr6C\n1t7pMgJh1vszEVG2TDg4lPXbnKu7/X/0Hy0IUzxQIKSgZ/ghKpzvwRInVkWCGiRY\n9pNVB0MNDux/7h77ZL7lcb30SmtO6bD32Ls309EVp/ZuBFfwpYLxzZyqWOSb7v81\nolk/Ly2OMQKBgQC8o22xLSvPxGSR4E+ZKATeHEoH4lsiWYL1mLQzkfZ/PlyMwX+G\ndYUbZx9BStqV7/Jt1ok6zjWyICI+Qpj8sf8s3bZ/PKpJk/aGtsaidNfMGgVyDyAb\nY69BPnBFD4kmOcpz1fnbm3x6+7JjHCWOW7ME09Ic2uEhnVLwcl8yvjbppQKBgQCk\nBIkO702hke8noOz+1/VwtO4gsQOBRYaBnXaqEkFVgWaDUEFVzVhQgxBeHncu5mf9\noDvWBKNUSlBcG2Np0ayotUhaolbp+q4Nyb2RWOq3hpKIOHbfV4eqW2ygF+M88XaE\nRee1zZZjqfNuF08Erp/X8kdJ3BbblA+uHnLuRtTfwQKBgQCq/ZsobqQa1uY2jrsQ\n2lb4vCmtT+S7QAKoEqD506x9Iakg9NKt2pekx27E4qeZlHjbWFax60bALdMoRdRU\nqDycoA6hVpYSnLtzukwCFYRINLX/Q76hR0rw09DlMBpowMnIO2ZmnObGMbuXB/a0\n6hkm0Kd75OgN8lWyN13/+MEMAQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gcp-imagen-model-abmcpl@abg-intelact-genai-platform.iam.gserviceaccount.com",
+  "client_id": "107091042808416934141",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcp-imagen-model-abmcpl%40abg-intelact-genai-platform.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
