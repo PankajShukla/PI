@@ -7,3 +7,4 @@ nltk
 st-clickable-images
 pillow
 pathlib
+matplotlib
