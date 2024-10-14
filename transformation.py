@@ -6,10 +6,6 @@ import json
 
 from utility import *
 
-def load_data(filename):
-    df = pd.read_csv(filename)
-    return df
-
 
 def get_sub_category(df_):
     

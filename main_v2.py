@@ -31,6 +31,7 @@ if __name__ == '__main__':
     filename = 'allBrands_gemini_1_5_pro_002_2024_10_12.csv'
 
     try:
+
         df = data_initialise(filename = filename)
         dff = streamlit_sidebar_selections_A(df)
     

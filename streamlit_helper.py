@@ -53,7 +53,8 @@ def add_markdowns_side_by_side(dict):
 
 def data_initialise(filename):
 
-    df_ = load_data(filename)
+    uploaded_file = st.sidebar.file_uploader("Upload data file (.csv format) ", type=["csv"])
+    df_ = pd.read_csv(uploaded_file)
     df_ = df_[df_['Category'].str.lower()=='footwear']
     df_, subcat_list = get_sub_category(df_)
     df_ = get_product_type(df_, subcat_list)
