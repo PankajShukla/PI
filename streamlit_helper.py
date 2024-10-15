@@ -55,7 +55,9 @@ def data_initialise(filename):
 
     uploaded_file = st.sidebar.file_uploader("Upload data file (.csv format) ", type=["csv"])
     df_ = pd.read_csv(uploaded_file)
+    df_['Category'] = df_['Category'].str.lower()
     df_ = df_[df_['Category'].str.lower()=='footwear']
+    df_ = df_[df_['Sub-category']!='-']
     df_, subcat_list = get_sub_category(df_)
     df_ = get_product_type(df_, subcat_list)
     return df_
@@ -163,6 +165,26 @@ def plot_image_snapshot(image_urls):
 
 def show_product_image_and_URL(df_, col1, col2, product_image):
     
+
+    headers = {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'cache-control': 'max-age=0',
+        'cookie': '_ga=GA1.1.234133065.1727358599; FPID=FPID2.2.7cW3yPvHEDP6McIG5yeYBbffxJX5xrW9RrTSoFTxS28%3D.1727358599; FPAU=1.2.381647108.1727358600; _fbp=fb.1.1727358599333.470456281805687223; _tt_enable_cookie=1; _ttp=GsE9ozb7NjZCVQqljGxi9lnujgl; _hjSessionUser_4982743=eyJpZCI6IjQ0MjRiNGNmLTVmYzAtNWUwNC05NjFmLTVkZGFmYTJlYWNiNSIsImNyZWF0ZWQiOjE3MjczNTg1OTkzOTIsImV4aXN0aW5nIjp0cnVlfQ==; __stripe_mid=61321cf4-3ad4-4e64-b20b-ec5eaee64f0dcd09bc; CookieScriptConsent={"action":"accept","consenttime":1718188349,"categories":"[\\"targeting\\"]"}; cf_clearance=nUXwKjQcYBXOiVjk5pcgeOfZTSxLoFJbG.dHW6FLr7I-1727523934-1.2.1.1-8p5KX747gzS5l.3MJEsE5m6QkBFosjAZDGp5ZMs4OWxupr3.HU_xnjxxXYSkFfqxShwNJqNPU7JZFpQeEy_sBvwq0MkTQNuiTlwpI7P1IXzZ7QBlrw9Jmfn0SVop7XtNvawCqXwZnf.m6tpimNW2TbFqxlbq5gCN2.EvM_36TM8c0EZ5LjeXp8TiTZ1ifzOA9JQz1dHkVBS6aOfb3Lc9u_wDQKmrKQ80C__gV_M8beRV3.2EfIktTgCZkiFKViLx.l3Uy3GZ7sCYRbQ4VpU7IegbkIFQr9JlL288GC7QuF9c_oGuGaS4wwiLKD6kRHVvly7AVtNElpOe.oQOKGuO5KQqmEhDnA5D6ATZiKYDr4VxMH8Ab6qzfRdWLOp0TKvZ; _uetvid=38a161f07c0e11efb54eabde2fc23a4d; cCount=51; _ga_8DC50N5KHH=GS1.1.1727522441.6.1.1727523956.0.0.934915884',
+        'if-modified-since': 'Wed, 31 Jan 2024 15:29:35 GMT',
+        'if-none-match': '"3ca03-6103f8bd41453"',
+        'priority': 'u=0, i',
+        'sec-ch-ua': '"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Linux"',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'none',
+        'sec-fetch-user': '?1',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+    }
+    
     stcol1,stcol2  = st.columns(2)
     
     with stcol1:
@@ -183,7 +205,7 @@ def show_product_image_and_URL(df_, col1, col2, product_image):
             link_text = "Click here to view the product on the website"
             st.markdown(f'<a href="{URL}" target="_blank" style="font-size:15px;">{link_text}</a>', unsafe_allow_html=True)
             
-            response = requests.get(image_selected)
+            response = requests.get(image_selected, headers=headers)
             img = Image.open(BytesIO(response.content))
             axes.imshow(img)
             axes.axis('off')

@@ -36,7 +36,7 @@ def get_word_combination_frequency(df_, col, _brand):
     df_[col] = df_[col].str.strip()
 
     items_list = df_[col].to_list()
-    text_word_combination  = find_word_combination_occurrences(items_list)
+    text_word_combination = find_word_combination_occurrences(items_list)
 
     word_list = list(set(text_word_combination))
 
@@ -46,6 +46,9 @@ def get_word_combination_frequency(df_, col, _brand):
     
     WF = pd.DataFrame(list(word_occurrences.items()), columns=[col, 'word_freq'])
     WF = WF.sort_values('word_freq', ascending=False)
+    
+    WF = WF[WF[col]!='-']
+    
     WF = WF.head(6)
     WF = WF.reset_index()
     WF.drop(columns='index', inplace=True)
